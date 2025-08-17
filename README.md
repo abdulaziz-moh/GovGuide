@@ -1,3 +1,4 @@
+# GovGuide
 **GovGuide** is a Django-based web application designed to make government processes more transparent and accessible. The platform provides step-by-step guides for various government-related tasks, such as applying for passports, registering businesses, or obtaining licenses. Users can search for processes, explore details like required documents and fees, and rate the clarity and effectiveness of each guide. Community members can also contribute by publishing new processes, with the rating system ensuring the most useful guides are highlighted.
 
 Key Features:
