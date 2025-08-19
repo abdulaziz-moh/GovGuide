@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=6 , initial-scale=1.0">
+    <link rel = 'stylesheet' href = "{% static 'accounts/css/styles.css' %}">
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+</head>
+<body>
+    <header >         
+        <div class = 'icon'>
+            <a href="{% url 'signup' %}">&#10006;</a> {% comment %} redirect to some landing page {% endcomment %}
+        </div>
+  </header>
+
+    <main>
+        <div class = 'container'>
+
+            <div class = 'left-container'>
+                <div class = 'left-text'>
+                    {% block left %}
+
+                    {% endblock %}
+                </div>
+            </div>
+            <div class = 'right-container'>
+                <div class = "right-text">
+                    {% block right %}
+
+                    {% endblock %}
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer>
+
+    </footer>
+
+</body>
+</html>

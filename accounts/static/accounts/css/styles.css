@@ -1,45 +1,65 @@
-* Basic reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+html, body,main {
+  height: 100%;
+  margin: 0; /* Remove default browser margin */
+  overflow: hidden; /* This prevents scrolling */
+  height: 100%;
+
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
+header{
+    
+}
+.icon{
+    height: 10%;
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 4%;
+    padding-right: 7%;
 }
 
-header {
-    background-color: #333;
-    padding: 10px;
-    text-align: center;
+
+.container{
+    height: 75%;
+
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 4%;
+    margin-bottom: 6%;
+
+    background-color:aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    border-radius: 10%;
+
 }
 
-header nav ul {
-    list-style-type: none;
+.left-container {
+    width: 50%;
+    border-radius: 10% 40% 40% 10%;
+    background: linear-gradient(to right, #7081d1, #512da8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-header nav ul li {
-    display: inline;
-    margin: 0 15px;
+.left-text{
+    color:white;
 }
 
-header nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
+.right-container{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
-.content {
-    margin: 20px;
+
+@media only screen and (max-width: 960px) {
+  .container{
+    margin-left: 2%;
+    margin-right: 2%;
+  }
 }
 
-footer {
-    text-align: center;
-    margin-top: 50px;
-    padding: 10px;
-    background-color: #333;
-    color: white;
-}
