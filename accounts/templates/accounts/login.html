@@ -1,1 +1,34 @@
 {% extends "accounts/base_forms.html" %}
+{% load static %}
+{% block head %}
+    <link rel = 'stylesheet' href = "{% static 'accounts/css/styles.css' %}">
+
+{% endblock %}
+{% block title %}
+    Login
+{% endblock %}
+{% block left %}
+    <h2>Hello Friend ✋!</h2>
+    <p> Don't have an account?</p>
+    <button type= submit class = 'left-button'>Signup</button>
+{% endblock %}
+{% block right %}
+    <h1 style = "
+    font-family: Arial, sans-serif;
+    font-weight: bold;">Sign In</h1>
+    <p> </p>
+
+ <form method="post">
+  {% csrf_token %}
+    <div class="form-group">
+        {{ form.username }}
+        {{ form.password }}
+
+    </div>
+    <div class = 'submit-button'>
+        <button type="submit" class = 'right-button'>Login</button>
+    </div>
+
+</form>
+
+{% endblock %}
