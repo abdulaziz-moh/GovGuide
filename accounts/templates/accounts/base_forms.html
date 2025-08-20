@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=6 , initial-scale=1.0">
     <link rel = 'stylesheet' href = "{% static 'accounts/css/styles.css' %}">
+    {% block head %}
+    {% endblock %}
+
     <title>
         {% block title %}
         {% endblock %}
@@ -13,7 +16,7 @@
 <body>
     <header >         
         <div class = 'icon'>
-            <a href="{% url 'signup' %}">&#10006;</a> {% comment %} redirect to some landing page {% endcomment %}
+            <a href="{% url 'signup' %}" style = "text-decoration: none;">&#10006;</a> {% comment %} redirect to some landing page {% endcomment %}
         </div>
   </header>
 

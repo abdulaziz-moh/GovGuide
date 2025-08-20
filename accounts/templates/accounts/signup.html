@@ -1,1 +1,86 @@
 {% extends "accounts/base_forms.html" %}
+{% load static %}
+{% block head %}
+    <link rel = 'stylesheet' href = "{% static 'accounts/css/styles.css' %}">
+{% comment %} <style>
+  .form-group {
+    display: grid;
+  }
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background: #f1f1f1ff;
+  }
+  .submit-button{
+    display: flex;
+    justify-content:center;
+
+  }
+  .left-button {
+    color: white;
+    padding: 7px 30px;
+    margin: 10px;
+    border: 2px solid #4CAF50;
+    border-radius: 5px;
+
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+    background: linear-gradient(to right, #7563e6ff, #4630d1);
+  }
+
+    .right-button {
+    color: white;
+    padding: 7px 30px;
+    margin: 10px;
+    border: 2px solid #7563e6ff;
+    border-radius: 5px;
+
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+    background: linear-gradient(to right, #7563e6ff, #4630d1);
+  }
+
+</style> {% endcomment %}
+
+{% endblock %}
+{% block title %}
+    Signup
+{% endblock %}
+{% block left %}
+    <h2>Welcome Back!</h2>
+    <p>Already have an account?</p>
+    <button type= submit class = 'left-button'>Signin</button>
+{% endblock %}
+{% block right %}
+    <h1>Create Account</h1>
+    <p> </p>
+
+ <form method="post">
+  {% csrf_token %}
+    <div class="form-group">
+        {{ form.first_name}}
+        {{ form.last_name }}
+        {{ form.username }}
+        {{ form.email }}
+        {{ form.password1 }}
+        {{ form.password2 }}
+
+    </div>
+    <div class = 'submit-button'>
+        <button type="submit" class = 'right-button'>Sign Up</button>
+    </div>
+
+</form>
+
+{% endblock %}
