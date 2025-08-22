@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Process List</title>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/htmx.org@1.9.6"></script>
+</head>
+<body>
+    <h1>Process List</h1>
+
+    <div id="process-list">
+        {% include 'processes/partials/process_items.html' with page_obj=page_obj %}
+    </div>
+</body>
+</html>

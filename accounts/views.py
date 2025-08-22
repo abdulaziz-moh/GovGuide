@@ -13,7 +13,7 @@ def signup_veiw(request):
             user = form.save()
             login(request, user)
             messages.success(request, "Account created successfully!")
-            return redirect('processes/process-list')
+            return redirect('/processes/process-list')
         pass
     else:
         form = SignupForm()
@@ -27,9 +27,7 @@ def login_view(request):
             user = form.get_user()
             login(request, user)
             
-            return render(request, 'processes/process-list')
-            
-        pass
+        return redirect('/processes/process-list')            
     else:
         form = AuthenticationForm()
         return render(request, 'accounts/login.html', {'form':form})

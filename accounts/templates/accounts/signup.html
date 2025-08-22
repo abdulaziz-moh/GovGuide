@@ -2,56 +2,6 @@
 {% load static %}
 {% block head %}
     <link rel = 'stylesheet' href = "{% static 'accounts/css/styles.css' %}">
-{% comment %} <style>
-  .form-group {
-    display: grid;
-  }
-  .form-group input {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    background: #f1f1f1ff;
-  }
-  .submit-button{
-    display: flex;
-    justify-content:center;
-
-  }
-  .left-button {
-    color: white;
-    padding: 7px 30px;
-    margin: 10px;
-    border: 2px solid #4CAF50;
-    border-radius: 5px;
-
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-
-    cursor: pointer;
-    background: linear-gradient(to right, #7563e6ff, #4630d1);
-  }
-
-    .right-button {
-    color: white;
-    padding: 7px 30px;
-    margin: 10px;
-    border: 2px solid #7563e6ff;
-    border-radius: 5px;
-
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-
-    cursor: pointer;
-    background: linear-gradient(to right, #7563e6ff, #4630d1);
-  }
-
-</style> {% endcomment %}
 
 {% endblock %}
 {% block title %}
@@ -63,7 +13,7 @@
     <button type= submit class = 'left-button'>Signin</button>
 {% endblock %}
 {% block right %}
-    <h1>Create Account</h1>
+    <h1 style = "font-family: Arial, sans-serif; font-weight: bold;">Create Account</h1>
     <p> </p>
 
  <form method="post">
