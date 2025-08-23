@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from . models import Process
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
+from . forms import ProcessForm, StepFormSet
 # Create your views here.
 
 def process_list(request):
@@ -11,7 +12,7 @@ def process_list(request):
     items_per_page = 20
     #create a paginator instance 
     paginator = Paginator(process_list, items_per_page)
-    
+     
     # get the current page number
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -24,11 +25,32 @@ def process_list(request):
 
 
 def process_detail(request, pk):
-    pass
+    process = get_object_or_404(Process, pk = pk)
+    return render(request, 'processes/detail.html', {"process":process})
 
 @login_required
-def process_create(request):
-    pass
+def create_process_steps(request):
+    if request.method == 'POST':
+        process_form = ProcessForm(request.POST)
+        formset = StepFormSet(request.POST)
+        
+        if process_form.is_valid() and formset.is_valid():
+            process = process_form.save(commit=False)
+            process.created_by = request.user  # add the user associated with the process here
+            process.save()
+             
+            steps = formset.save(commit=False)
+            for step in steps:
+                step.process_id = process
+                step.save()
+            return redirect('success_page')
+        else:
+            process_form = ProcessForm()
+            formset = StepFormSet()
+        return render(request, 'create_process.html', {'process_form':process_form, 'formset':formset})
+    
+    
+             
 
 @login_required
 def process_delete(request, pk):
