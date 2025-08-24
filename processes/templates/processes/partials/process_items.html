@@ -1,7 +1,8 @@
 {% for process in page_obj %}
     <div>
-        <h3>{{ process.name }}</h3>
+        <h3>{{ process.title }}</h3>
         <p>{{ process.description }}</p>
+        <p>{{ process.average_rating }}</p>
     </div>
 {% endfor %}
 
