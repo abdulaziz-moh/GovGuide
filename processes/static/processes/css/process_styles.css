@@ -1,0 +1,53 @@
+html, body,main {
+  height: 100%;
+  margin: 0; /* Remove default browser margin */
+  overflow: hidden; /* This prevents scrolling */
+  height: 100%;
+  font-family: sans-serif;
+
+}
+
+
+
+.container{
+  display: grid;
+  height: 100%;
+  
+  grid-template-columns: 1fr 3fr  1fr;
+  grid-template-rows: 1fr 8fr 1fr
+}
+
+.nav-bar {
+    grid-column: 1 / 4; /* Span from column line 1 to 4 (all 3 columns) */
+    background-color: #f2f2f2;
+    padding: 1rem;
+}
+
+.left-container {
+    grid-column: 1; /* Placed in the first column (row is auto) */
+    background-color: #e6e6e6;
+}
+
+.middle-container {
+    grid-column: 2; /* Placed in the second column */
+    background-color: #d9d9d9;
+}
+
+.right-container {
+    grid-column: 3; /* Placed in the third column */
+    background-color: #cccccc;
+}
+
+.footer {
+    grid-column: 1 / 4; /* Span from column line 1 to 4 (all 3 columns) */
+    background-color: #bfbfbf;
+    padding: 1rem;
+}
+
+
+
+
+
+
+
+

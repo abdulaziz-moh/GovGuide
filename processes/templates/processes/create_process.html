@@ -1,0 +1,42 @@
+<form method="post">
+    {% csrf_token %}
+
+    <h2>Create Process</h2>
+    {{ process_form.as_p }}
+
+    <h2>Steps</h2>
+    {{ formset.management_form }}
+    <div id="form-container">
+        {% for form in formset %}
+            <div class="step-form">{{ form.as_p }}</div>
+        {% endfor %}
+    </div>
+
+    <!-- hidden empty form template -->
+    <div id="empty-form" style="display:none;">
+        {{ formset.empty_form.as_p }}
+    </div>
+
+    <button type="button" id="add-step">+ Add Step</button>
+    <button type="submit">Save</button>
+</form>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const formContainer = document.getElementById('form-container');
+    const addButton = document.getElementById('add-step');
+    const totalForms = document.getElementById('id_steps-TOTAL_FORMS'); 
+    const emptyForm = document.getElementById('empty-form').innerHTML;
+
+    let formCount = parseInt(totalForms.value);
+
+    addButton.addEventListener('click', function() {
+        // Replace __prefix__ with the current count
+        let newFormHtml = emptyForm.replace(/__prefix__/g, formCount);
+        formContainer.insertAdjacentHTML('beforeend', newFormHtml);
+
+        formCount++;
+        totalForms.value = formCount; // update management form
+    });
+});
+</script>

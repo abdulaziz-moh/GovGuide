@@ -3,11 +3,11 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Process(models.Model):
-    title = models.CharField(max_length=200 ,required = True)
+    title = models.CharField(max_length=200 )
     description = models.TextField()
     num_rates = models.IntegerField(default=0)  # updated from the reviews class
     avg_rating = models.FloatField(default=0.0)
-    created_by = models.ForeignKey(User,related_name='processes') # we may delete a post if the user is deleted( on_delete = models.CASCADE)
+    created_by = models.ForeignKey(User,on_delete=models.CASCADE, related_name='processes') # we may delete a post if the user is deleted( on_delete = models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
@@ -18,9 +18,9 @@ class Process(models.Model):
         
 
 class Step(models.Model):
-    order_number = models.CharField(default=1)
+    order_number = models.IntegerField(default=1)
     step_name = models.CharField(max_length=100)
-    discription = models.TextField()
+    description = models.TextField()
     process_id = models.ForeignKey(Process, on_delete=models.CASCADE , related_name='steps')
     
     def save(self,*args,**kwargs):  # this save method first automatically add a value for the order_number and then save it to db(because we only get data other than the order_number from the form)

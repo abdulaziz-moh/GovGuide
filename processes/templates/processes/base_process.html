@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=6 , initial-scale=1.0">
+    <link rel = 'stylesheet' href = "{% static 'processes/css/process_styles.css' %}">
+    {% block head %}
+    {% endblock %}
+
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+</head>
+<body>
+
+    <div class = 'container'>
+        <div class = 'nav-bar'>
+            <p> footer</p>
+            {% block navigatin_bar %}
+            {% endblock %}
+        </div>
+
+        <div class = 'left-container'>
+                <p> footer</p>
+                {% block left %}
+
+                {% endblock %}
+        </div>
+
+        <div class = 'middle-container'>
+                <p> footer</p>
+                {% block middle %}
+
+                {% endblock %}
+                </form>
+        </div>
+
+        <div class = 'right-container'>
+            <p> footer</p>
+                {% block right %}
+
+                {% endblock %}
+                </form>
+        </div>
+
+        <footer class = 'footer'>
+            <p> footer</p>
+            {% block footer %}
+            {% endblock %}
+        </footer>
+    </div>
+
+</body>
+</html>

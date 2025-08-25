@@ -27,7 +27,7 @@ def login_view(request):
             user = form.get_user()
             login(request, user)
             
-        return redirect('/processes/process-list')            
+        return redirect('/processes/create_process')            
     else:
         form = AuthenticationForm()
         return render(request, 'accounts/login.html', {'form':form})
