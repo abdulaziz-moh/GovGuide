@@ -59,3 +59,5 @@ def create_process_steps(request):
 @login_required
 def process_delete(request, pk):
     pass
+def baseprocess(request):
+    return render(request, 'processes/base_process.html')

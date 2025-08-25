@@ -1,0 +1,14 @@
+    <div>
+        <h3>{{ process.title }}</h3>
+        <p>{{ process.description }}</p>
+        <p>{{ process.average_rating }}</p>
+        <p>{{ process.created_by.first_name }}</p>
+        {% for val in process.steps.all %}
+            <p>{{ val.order_number }}</p>
+            <p>{{ val.step_name }}</p>
+            <p>{{ val.description }}</p>
+        {% endfor %}
+        {% comment %} <p>{{ process.average_rating }}</p> {% endcomment %}
+
+        <a href = "{% url 'process_detail' process.pk %}">more...</a>
+    </div>
