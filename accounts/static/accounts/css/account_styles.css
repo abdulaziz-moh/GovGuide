@@ -2,7 +2,6 @@ html, body,main {
   height: 100%;
   margin: 0; /* Remove default browser margin */
   overflow: hidden; /* This prevents scrolling */
-  height: 100%;
 
 }
 
