@@ -4,102 +4,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <link rel="stylesheet" href="{% static 'processes/css/process_styles.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    {% block head %}{% endblock %}
+    <script src = "https://unpkg.com/htmx.org@1.9.11"></script>
 
-    <title>{% block title %}{% endblock %}</title>
+    {% block head %}
+    {% endblock %}
 </head>
 <body>
+    <div class = "nav-bar">
 
-<div class="container">
-    <div class="nav-bar">
-        <img src="{% static 'processes/images/logo.png' %}" alt="logo">
+        <img src="{% static 'processes/images/newlogo.png' %}" alt="logo">
         <div class="icons">
-            <i class="fa-solid fa-house" style="font-size:24px"></i>
-            <i class="fa-regular fa-circle-question" style="font-size:24px"></i>
-            <i class="fa-solid fa-bell" style="font-size:24px"></i>
-            <i class="fa-solid fa-magnifying-glass" style="font-size:24px"></i>
+            <a href="#"><i class="fa-solid fa-house" style="font-size:24px"></i></a>
+            <a href="#"><i class="fa-regular fa-circle-question" style="font-size:24px"></i></a>
+            <a href="#"><i class="fa-solid fa-bell" style="font-size:24px"></i></a>
+            <a href="#"><i class="fa-solid fa-magnifying-glass" style="font-size:24px"></i></a>
+            
         </div>
-        {% block navigation_bar %}{% endblock %}
+        <div class="search">
+            {% block search %}
+            {% endblock %} 
+        </div>
     </div>
+    <div class="left-section">
+        {% block left-section %}
+        {% endblock %}
 
-    <div class="left-container">
+    </div>
+    <div class="right-section">
+        <div class="main-content" >
+            {% block main-content %}
+            {% endblock %}
 
-        <div class="profile-section">
-            <div class="profile-header">
-                <img src="{% static 'processes/images/profile.png' %}" alt="Profile Picture">
-                <span class="username">John Doe</span>
-                <i class="fa-solid fa-caret-down dropdown-icon"></i>
-            </div>
-            <ul class="dropdown-menu">
-                <li><a href="#"><i class="fa-solid fa-user"></i> Profile</a></li>
-                <li><a href="#"><i class="fa-solid fa-paper-plane"></i> Posts</a></li>
-                <li><a href="#"><i class="fa-solid fa-gear"></i> Settings</a></li>
-                <li><a href="#"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sign Out</a></li>
-            </ul>
-
+            {% comment %} <p>this is sample post this is sample postthis is sample post this is sample post this is sample post this is sample post this is sample post </p> {% endcomment %}
         </div>
-
-        {% block left %}{% endblock %}
-        <div class="sidebar-footer">
-            <p>&copy; 2025 GOVGUIDE&trade;</p>
-            <p> all rights reserved</p>
-            {% block footer %}{% endblock %}
-        </div>
+     
     </div>
     
-    <div class="middle-container">
-        <div class= "feed">
-        <!-- Create Post Block -->
-        <div class="create-post">
-            <div class="create-post-header">
-                <img src="{% static 'processes/images/profile.png' %}" alt="Profile">
-                <input type="text" placeholder="Want to post a process?" readonly>
-            </div>
-            <div class="create-post-actions">
-                <a href="#"><i class="fa-solid fa-plus"></i> Create a process</a>
-                <a href="#"><i class="fa-solid fa-file-pen"></i> Edit a process</a>
-            </div>
-
-        </div>
-
-        <!-- Post Block -->
-        <div class="post">
-            <div class="post-header">
-                <img src="{% static 'processes/images/profile.png' %}" alt="Profile">
-                <div>
-                    <h4 class="post-username">Jane Doe</h4>
-                    <span class="post-time">2 hrs ago</span>
-                </div>
-            </div>
-            <div class="post-body">
-                <h3 class="post-title">My First Post!</h3>
-                <p class="post-description">
-                    This is a description of the post. Excited to share this update with everyone 🚀
-                </p>
-                <img src="{% static 'processes/images/profile.png' %}" alt="Post Image" class="post-image">
-                <img src="{% static 'processes/images/profile.png' %}" alt="Post Image" class="post-image">
-
-            </div>
-        </div>
-        </div>
-
-
-
-        {% block middle %}{% endblock %}
-    </div>
-
-
-</div> <!-- container -->
 </body>
 </html>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const profileSection = document.querySelector(".profile-section");
-    profileSection.addEventListener("click", function() {
-        profileSection.classList.toggle("active");
-    });
-});
-</script>

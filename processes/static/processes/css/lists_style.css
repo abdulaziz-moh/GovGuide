@@ -1,0 +1,227 @@
+/* Sidebar footer */
+
+.sidebar-footer {
+
+    position: absolute; /* stick it at the bottom of sidebar */
+    bottom: 0rem;
+    left: 0;
+    width: 100%;
+    /* background-color: #0073e6; */
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 0.8rem;
+    color: #555;
+}
+
+/* Profile Section */
+
+.profile-section {
+    margin: 1rem;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.profile-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.username {
+    font-weight: bold;
+    flex-grow: 1; /* push arrow to the right */
+}
+
+.dropdown-icon {
+    transition: transform 0.2s ease;
+}
+
+.profile-section.active .dropdown-icon {
+    transform: rotate(180deg);
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    padding: 0;
+    background: #fff;
+    list-style: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: none; /* makes the block invisible unless the dropdown menu clicked*/
+
+}
+
+.dropdown-menu li {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.dropdown-menu li:last-child {
+    border-bottom: none;
+}
+
+.dropdown-menu li a {
+    display: flex;              /* aligns icon + text */
+    align-items: center;
+    gap: 0.6rem;                /* space between icon and text */
+    padding: 0.8rem 1rem;
+    text-decoration: none;
+    color: #333;
+    font-size: 0.9rem;
+    transition: background 0.2s ease;
+}
+
+.dropdown-menu li a:hover {
+    background: #f5f5f5;
+}
+.dropdown-menu li a:hover i {
+    color: #0073e6;             /* highlight icon on hover too */
+}
+
+/* Show dropdown when active */
+.profile-section.active .dropdown-menu {
+    display: block;
+}
+
+
+
+/* ========================================================================================== */
+/* Create Post */
+.create-post {
+    max-width: 700px;
+    margin: 1rem;
+    background: #fff;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 1rem;
+}
+
+.create-post-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.create-post-header img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.create-post-header input {
+    flex: 1;
+    padding: 0.6rem 1rem;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.create-post-header input:hover {
+    background: #f9f9f9;
+}
+
+.create-post-actions {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 0.5rem;
+}
+
+.create-post-actions a {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #555;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: background 0.2s;
+    text-decoration: none;   /* remove underline */
+    font-family: sans-serif;
+}
+
+.create-post-actions a:hover {
+    background: #f5f5f5;
+    color: #000;             /* optional darker hover */
+}
+
+/* Post Block */
+.post {
+    max-width: 700px;
+    margin: 1rem;
+    background: linear-gradient(to right, #5d89e8, #bed3ff);
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 1rem;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.post-header img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.post-username {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.post-time {
+    font-size: 0.8rem;
+    color: gray;
+}
+
+.post-body h3 {
+    margin: 0.2rem 0;
+}
+
+.post-description {
+    margin: 0.5rem 0 1rem 0;
+    line-height: 1.4;
+}
+
+.post-image {
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+/* processes/css/lists_style.css */
+
+.loading-indicator {
+    text-align: center;
+    padding: 1rem;
+    font-size: 2rem; /* Adjust the size of the spinner */
+    color: #4c95d4;
+}
+
+.loading-indicator i { /* Target the icon directly */
+  background: linear-gradient(to right, #0a70c9,#3a8ad0, aliceblue );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent; /* Fallback for browsers that don't support text-fill-color */
+}

@@ -14,12 +14,14 @@ def process_list(request):
     paginator = Paginator(list_of_processes, items_per_page)
     # get the current page number
     page_number = request.GET.get('page')
+    print("THIS IS page number: ", page_number)
     page_obj = paginator.get_page(page_number)
 
     if request.headers.get('HX-Request'): # then we will return a template(named partial ) with just the new items
         return render(request, 'processes/partials/process_items.html',{'page_obj':page_obj})
     
     # for initial page load, render the full page
+    print("again")
     return render(request, 'processes/list.html',{'page_obj':page_obj})
 
 
