@@ -1,15 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+{% extends "processes/base_process.html" %}
+{% load static %}
+{% block head %} 
     <title>Process List</title>
-    <meta charset="UTF-8">
-    <script src="https://unpkg.com/htmx.org@1.9.6"></script>
-</head>
-<body>
-    <h1>Process List</h1>
+    <link rel="stylesheet" href="{% static 'processes/css/lists_style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <div id="process-list">
-        {% include 'processes/partials/process_items.html' with page_obj=page_obj %}
+{% endblock %}
+
+{% block search %}
+    <input type="text" placeholder="Search">
+{% endblock %}
+
+{% block left-section %}
+
+    <div class="profile-section">
+        <div class="profile-header">
+            <img src="{% static 'processes/images/profile.png' %}" alt="Profile Picture">
+            <span class="username"> User </span>
+            <i class="fa-solid fa-caret-down dropdown-icon"></i>
+        </div>
+        <ul class="dropdown-menu">
+            <li><a href="{% url 'profile' %}"><i class="fa-solid fa-user"></i> Profile</a></li>
+            <li><a href="{% url 'base' %}"><i class="fa-solid fa-paper-plane"></i> Posts</a></li>
+            <li><a href="{% url 'settings' %}"><i class="fa-solid fa-gear"></i> Settings</a></li>
+            <li><a href="{% url 'logout' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sign Out</a></li>
+        </ul>
+
     </div>
-</body>
-</html>
+
+    <div class="sidebar-footer">
+        <p>&copy; 2025 GOVGUIDE&trade;</p>
+        <p> All rights reserved</p>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const profileSection = document.querySelector(".profile-section");
+            profileSection.addEventListener("click", function() {
+                profileSection.classList.toggle("active");
+            });
+        });
+    </script>
+
+{% endblock %}
+
+{% block main-content %}
+
+    <div class="create-post">
+        <div class="create-post-header">
+            <img src="{% static 'processes/images/profile.png' %}" alt="Profile">
+            <input type="text" placeholder="Want to post a process?" readonly>
+        </div>
+        <div class="create-post-actions">
+            <a href="{% url 'create_process' %}"><i class="fa-solid fa-plus"></i> Create a process</a>
+            <a href="{% url 'create_process' %}"><i class="fa-solid fa-file-pen"></i> Edit a process</a>
+        </div>
+    </div>
+
+    {% include 'processes/partials/process_items.html' with page_obj=page_obj %}
+    
+{% endblock %}

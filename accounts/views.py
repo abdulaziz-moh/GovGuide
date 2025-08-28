@@ -13,7 +13,7 @@ def signup_veiw(request):
             user = form.save()
             login(request, user)
             messages.success(request, "Account created successfully!")
-            return redirect('/processes/process-list')
+            return redirect('/processes/process_list/')
         pass
     else:
         form = SignupForm()

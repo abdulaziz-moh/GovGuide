@@ -1,60 +1,56 @@
 html, body {
     margin: 0;
     padding: 0;
-    height: 100%;
     width: 100%;
-    overflow-x: hidden;
+    background: #f7f7f7;
+    /* height: 100%; */
+    overflow: hidden; /* prevent whole page scroll */
 }
-/* ============================== Container ========================================================= */
-.container {
-    display: grid;
-    height: 100%;
-    grid-template-columns: 1fr 3fr;
-    grid-template-rows: auto 1fr;
-    grid-template-areas:
-    "nav nav"
-    "left middle";
-}
+/* ============================== navigation bar ======================================================== */
 
 .nav-bar {
-    grid-area: nav;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10dvh;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 1rem;
 
-    height: 10vh; /* 10% of viewport height */
-    position: fixed; /* stays at top, posts scroll under it */
-
-    background: rgba(255, 255, 255, 0.15); /* very transparent */
-    backdrop-filter: blur(8px); /* glassy effect */
-    -webkit-backdrop-filter: blur(8px); /* Safari support */
-
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(6px);
     border-bottom: 1px solid rgba(108, 102, 102, 0.2);
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 10;
+
+    z-index: 10; /* keep it above scrolling content */
 }
 
-.left-container { grid-area: left; background-color: #dfe3ee; overflow: hidden;   /* no scroll */     position: relative; /* needed so footer sticks at bottom */ padding-top: 10vh; /* offset for fixed nav-bar */}
-.middle-container { grid-area: middle; background-color: #dfe3ee;  overflow-y: auto; /* allow vertical scroll */ padding: 1rem; position: relative; padding-top: 12vh; /* offset for fixed nav-bar */}
-
-/* ============================== navigation bar ======================================================== */
-
 .nav-bar img {
+    padding: 5%;
     height: 65px; /* prevents it from getting too big */
     width: 65px;
     border-radius: 50%;
     object-fit: cover;
 }
+/* 1234567890--09876543567890-78trfygvbkju9y ghjhhb,jvj */
+.nav-bar .search{
+    padding-right: 5%;
+}
+.nav-bar .search input{
+    padding: 10px;
+    border-radius: 40px;
+}
+/* rtyuhrtygfrjtujghe5e46568709puygfcxvbn87675e8976tygh */
 
 .nav-bar .icons {
+    padding: 5%;
     display: flex;
-    gap: 1.5rem; /* spacing between icons */
+    gap: 3rem; /* spacing between icons */
 }
 
 .nav-bar .icons i {    /* change it to pointer when the pointer is placed on the icons */
+    color: black;  /* icons color */
     cursor: pointer;
     transition: transform 0.2s ease, color 0.2s ease;
 }
@@ -63,224 +59,39 @@ html, body {
     transform: scale(1.2);
     color: #0073e6; /* highlight color when hovered */
 }
+/* ============================== navigation bar ======================================================== */
 
-/* ============================== left-container ======================================================== */
-/* Sidebar footer */
 
-.sidebar-footer {
-    position: absolute; /* stick it at the bottom of sidebar */
-    bottom: 0rem;
+.left-section {
+    overflow-x: hidden;
+    position: fixed;
+    top: 10dvh;   /* starts below the navbar */
     left: 0;
-    width: 100%;
-    /* background-color: #0073e6; */
-    text-align: center;
-    padding: 0.5rem;
-    font-size: 0.8rem;
-    color: #555;
+    width: 25%;
+    height: 90dvh;
+    background-color:#f7f7f7;
+    overflow-y: auto; /* optional if profile is long */
+    z-index: 5;
 }
 
-/* Profile Section */
-
-.profile-section {
-    margin: 1rem;
-    position: relative;
-}
-
-.profile-header {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem;
-    background: #fff;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.profile-header img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.username {
-    font-weight: bold;
-    flex-grow: 1; /* push arrow to the right */
-}
-
-.dropdown-icon {
-    transition: transform 0.2s ease;
-}
-
-.profile-section.active .dropdown-icon {
-    transform: rotate(180deg);
-}
-
-/* Dropdown Menu */
-.dropdown-menu {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.right-section {
     position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    display: none;
-    overflow: hidden;
+    padding-top: 10dvh;
+    top: 0;      /* start at very top (under nav-bar) */
+    left: 25%;   /* push to the right of profile */
+    right: 0;
+    bottom: 0;
+
+    width: 75%;
+    /* padding: 1rem; */
+    background-color: #f7f7f7;
+
+    overflow-y: auto; /*this part scrolls
+    z-index: 1;       /* keep it beneath the navbar */
 }
 
-.dropdown-menu li {
-    border-bottom: 1px solid #f0f0f0;
-}
+.main-content{
+    max-width: 700px;
+    background-color: #f7f7f7;
 
-.dropdown-menu li:last-child {
-    border-bottom: none;
-}
-
-.dropdown-menu li a {
-    display: flex;              /* aligns icon + text */
-    align-items: center;
-    gap: 0.6rem;                /* space between icon and text */
-    padding: 0.8rem 1rem;
-    text-decoration: none;
-    color: #333;
-    font-size: 0.9rem;
-    transition: background 0.2s ease;
-}
-
-.dropdown-menu li a:hover {
-    background: #f5f5f5;
-}
-.dropdown-menu li a:hover i {
-    color: #0073e6;             /* highlight icon on hover too */
-}
-
-/* Show dropdown when active */
-.profile-section.active .dropdown-menu {
-    display: block;
-}
-
-/* ============================== middle container ======================================================== */
-/* main section */
-.feed{
-    width: 100%;
-    max-width: 700px; /* make the posts not expand more than 700px */
-}
-
-.middle-container::-webkit-scrollbar {
-  display: none;  /* Chrome, Safari */
-}
-/* Create Post */
-.create-post {
-    background: #fff;
-    padding: 1rem;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    margin-bottom: 1rem;
-}
-
-.create-post-header {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    margin-bottom: 0.8rem;
-}
-
-.create-post-header img {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.create-post-header input {
-    flex: 1;
-    padding: 0.6rem 1rem;
-    border-radius: 20px;
-    border: 1px solid #ddd;
-    cursor: pointer;
-}
-
-.create-post-header input:hover {
-    background: #f9f9f9;
-}
-
-.create-post-actions {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 0.5rem;
-}
-
-.create-post-actions a {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    color: #555;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    transition: background 0.2s;
-    text-decoration: none;   /* remove underline */
-    font-family: sans-serif;
-}
-
-.create-post-actions a:hover {
-    background: #f5f5f5;
-    color: #000;             /* optional darker hover */
-}
-
-/* Post Block */
-.post {
-    background: linear-gradient(to right, #5d89e8, #bed3ff);
-    padding: 1rem;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    margin-bottom: 1rem;
-}
-
-.post-header {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    margin-bottom: 1rem;
-}
-
-.post-header img {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.post-username {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: bold;
-}
-
-.post-time {
-    font-size: 0.8rem;
-    color: gray;
-}
-
-.post-body h3 {
-    margin: 0.2rem 0;
-}
-
-.post-description {
-    margin: 0.5rem 0 1rem 0;
-    line-height: 1.4;
-}
-
-.post-image {
-    width: 100%;
-    border-radius: 10px;
-    object-fit: cover;
 }

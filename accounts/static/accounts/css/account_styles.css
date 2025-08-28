@@ -28,13 +28,13 @@ header{
     display: flex;
     justify-content: center;
     align-items: stretch;
-    border-radius: 10%;
+    border-radius: 50px;
 
 }
 
 .left-container {
     width: 50%;
-    border-radius: 10% 40% 40% 10%;
+    border-radius: 50px 30% 30% 50px;
     background: linear-gradient(to right, #7081d1, #4e25ac);
     display: flex;
     justify-content: center;
