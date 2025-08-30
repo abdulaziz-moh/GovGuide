@@ -17,6 +17,7 @@
         {% if process.image %}
             <img src="{{ process.image.url }}" alt="Post Image" class="post-image">
         {% endif %}
+        <a style="text-decoration:none;" href = "{% url 'process_detail' process.pk %}">more...</a>
     </div>
 </div>
 {% endfor %}

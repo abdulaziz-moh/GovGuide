@@ -1,0 +1,173 @@
+.process-section{
+    background-color: #f0f2f6;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    margin-right: 1rem;
+
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border: 1px solid #3366ff;
+}
+.process-section #process-description{
+    margin-left: 1rem;
+    font-family: sans-serif;
+    font-size: 1rem;
+}
+.title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.title p{
+
+}
+.title h2{
+
+}
+.title .profile{
+    background-color: #e8eaf0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+}
+
+/* ============================= Steps section ========================== */
+#step-text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.steps-section{
+    /* background-color: aqua; */
+    font-family: sans-serif;
+    margin-left: 5rem; /* make space for the line */
+    margin-right: 1rem;
+    position: relative; /* Keep this to create a positioning context for a different element */
+
+}
+
+/* vertical line */
+.steps-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -2.5rem;
+    bottom: 0;
+    width: 5px;
+    background-color: #3366ff;
+    border-radius: 2px;
+}
+
+/* circle marker */
+.steps-section::after {
+    content: '';
+    position: absolute;
+    top: 2.3rem; /* adjust to match first step */
+    left: -3rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: greenyellow;
+    border-radius: 50%;
+    border: 2px solid #3366ff; /* optional: match line color */
+}
+
+
+
+
+
+.steps-section #order_number{
+    /* background-color: greenyellow; */
+    color:gray;
+    font-size: 12px;
+}
+.steps-section #step_name{
+    /* background-color: yellow; */
+    font-size: 20px;
+    font-weight: bold;
+}
+.steps-section #description{
+    /* background-color: aqua; */
+    margin-left: 1rem;
+    margin-bottom: 3rem;
+
+    
+}
+
+
+:root {
+  --star-size: 30px;
+  --star-color-gray: #dfdddd;
+  --star-color-gold: #ffc107;
+}
+
+.rating {
+  display: flex;
+  flex-direction: row-reverse; /* Reverse the order of stars */
+  justify-content: center;
+  /* margin-bottom: 1rem; */
+}
+
+.rating > input {
+  display: none; /* Hide the actual radio buttons */
+}
+
+.rating > label {
+  cursor: pointer;
+  color: var(--star-color-gray);
+  font-size: var(--star-size);
+  padding: 5px;
+  transition: color 0.2s; /* Smooth color transition */
+}
+
+/* Style the stars on hover */
+.rating > input:not(:checked) ~ label:hover,
+.rating > input:not(:checked) ~ label:hover ~ label {
+  color: var(--star-color-gold);
+}
+
+/* Style the stars when a rating is selected */
+.rating > input:checked ~ label {
+  color: var(--star-color-gold);
+}
+
+.comment {
+  resize: none; /* Allows the user to resize the textarea vertically */
+  field-sizing: content;
+  min-height: 80px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+
+  background:#f0f2f6;
+  width: 100%;
+  padding: 1rem;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+
+}
+.submit{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+}
+.submit_button{
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+
+    background-color: yellowgreen;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    font-size: 20px;
+    border: 1px solid rgb(112, 147, 252);
+    border:none;
+}
+.submit_button:hover{
+    transform: scale(1.1);
+}

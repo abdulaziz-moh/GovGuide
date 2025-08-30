@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from . models import Process
+from reviews.forms import ReviewForm
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from . forms import ProcessForm, StepFormSet
@@ -14,20 +15,19 @@ def process_list(request):
     paginator = Paginator(list_of_processes, items_per_page)
     # get the current page number
     page_number = request.GET.get('page')
-    print("THIS IS page number: ", page_number)
     page_obj = paginator.get_page(page_number)
 
     if request.headers.get('HX-Request'): # then we will return a template(named partial ) with just the new items
         return render(request, 'processes/partials/process_items.html',{'page_obj':page_obj})
     
     # for initial page load, render the full page
-    print("again")
     return render(request, 'processes/list.html',{'page_obj':page_obj})
 
 
 def process_detail(request, pk):
     process = get_object_or_404(Process, pk = pk)
-    return render(request, 'processes/detail.html', {"process":process})
+    form = ReviewForm()
+    return render(request, 'processes/detail.html', {"process":process, "form":form})
 
 @login_required
 def create_process_steps(request):
