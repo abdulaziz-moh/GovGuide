@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from . models import Process
 from reviews.forms import ReviewForm
+from reviews.models import Review
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from . forms import ProcessForm, StepFormSet
@@ -26,8 +27,30 @@ def process_list(request):
 
 def process_detail(request, pk):
     process = get_object_or_404(Process, pk = pk)
-    form = ReviewForm()
-    return render(request, 'processes/detail.html', {"process":process, "form":form})
+    
+    if request.user.is_authenticated:    # this uses to give a review form for authenticated and user who didn't rate before.
+        try:
+            Review.objects.get(user_id=request.user.id ,process_id=pk)
+            
+            form = None
+        except Review.DoesNotExist:
+            if request.method == "POST":
+                form = ReviewForm(request.POST)
+                if form.is_valid():
+                    review = form.save(commit=False)
+                    if request.user.is_authenticated:
+                        review.user_id = request.user
+                        review.process_id = process  # 👈 Corrected line
+                    review.save()
+                    review.process_id.average_rating(review.rating)
+                    return redirect("process_list") 
+            else:
+                form = ReviewForm()
+            
+    else:
+        form = None
+
+    return render(request, 'processes/detail.html', {"process": process, "form": form})
 
 @login_required
 def create_process_steps(request):

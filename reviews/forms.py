@@ -8,5 +8,5 @@ class ReviewForm(forms.ModelForm):
     def clean_rating(self):
         rating = self.cleaned_data.get("rating")
         if rating not in [1, 2, 3, 4, 5]:
-            raise forms.ValidationError("Invalid rating. Must be 1–5 stars.")
+            raise forms.ValidationError("Invalid rating. Must be 1-5 stars.")
         return rating
