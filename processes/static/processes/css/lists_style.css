@@ -176,6 +176,10 @@
     gap: 0.8rem;
     margin-bottom: 1rem;
 }
+#rate {
+    margin-left: auto;  /* pushes the rating to the right corner*/
+}
+
 
 .post-header img {
     width: 45px;

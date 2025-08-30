@@ -8,6 +8,7 @@
             <h4 class="post-username">{{ process.created_by.first_name }}</h4>
             <span class="post-time">{{ process.created_at|date:"M d, Y H:i" }}</span>
         </div>
+        <div id = "rate">⭐ {{ process.avg_rating }} </div>
     </div>
     <div class="post-body">
         <h3 class="post-title">{{ process.title }}</h3>

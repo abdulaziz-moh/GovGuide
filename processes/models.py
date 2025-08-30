@@ -13,7 +13,16 @@ class Process(models.Model):
     def __str__(self):
         return self.title
     def average_rating(self,rate):   # will be used in reviws app
-        self.avg_rating = ((self.avg_rating * self.num_rates) + rate) /(self.num_rates + 1)
+        new_num_rates = self.num_rates + 1
+        new_avg_rating = ((self.avg_rating * self.num_rates) + rate) / new_num_rates
+        
+        # Update the object's attributes in memory
+        self.num_rates = new_num_rates
+        self.avg_rating = new_avg_rating
+        
+        # Save the changes to the database
+        self.save()  # 👈 This is the crucial missing part
+        
         return self.avg_rating
         
 
