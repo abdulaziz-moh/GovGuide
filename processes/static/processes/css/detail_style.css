@@ -108,7 +108,7 @@
   display: flex;
   flex-direction: row-reverse; /* Reverse the order of stars */
   justify-content: center;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
 }
 
 .rating > input {
@@ -132,4 +132,42 @@
 /* Style the stars when a rating is selected */
 .rating > input:checked ~ label {
   color: var(--star-color-gold);
+}
+
+.comment {
+  resize: none; /* Allows the user to resize the textarea vertically */
+  field-sizing: content;
+  min-height: 80px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+
+  background:#f0f2f6;
+  width: 100%;
+  padding: 1rem;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+
+}
+.submit{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+}
+.submit_button{
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+
+    background-color: yellowgreen;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    font-size: 20px;
+    border: 1px solid rgb(112, 147, 252);
+    border:none;
+}
+.submit_button:hover{
+    transform: scale(1.1);
 }
