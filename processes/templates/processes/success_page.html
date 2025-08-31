@@ -1,0 +1,15 @@
+{% extends "processes/base_process.html" %}
+{% load static %}
+{% block head %} 
+    <link rel="stylesheet" href="{% static 'processes/css/success_style.css'%}">
+    <title>Success</title>
+{% endblock %}
+{% block main-content %}
+    <div class="success">
+        <h1>Successfully created a process🎉</h1>
+    </div>
+    <div class="navigate">
+        <a href="{% url 'process_list' %}"><i class="fa-solid fa-house" style="font-size:24px"></i><p>Go to Home</p></a>
+        <a href="{% url 'create_process' %}"><i class="fa-solid fa-plus"></i><p> Create another Post</p></a>    
+    </div>
+{% endblock %}

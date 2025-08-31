@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=6 , initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
     <link rel = 'stylesheet' href = "{% static 'accounts/css/account_styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.png' %}">
+
     {% block head %}
     {% endblock %}
 
@@ -16,7 +19,7 @@
 <body>
     <header >         
         <div class = 'icon'>
-            <a href="{% url 'signup' %}" style = "text-decoration: none;">&#10006;</a> {% comment %} redirect to some landing page {% endcomment %}
+            <a href="{% url 'process_list' %}" style = "text-decoration: none;">&#10006;</a> {% comment %} redirect to some landing page {% endcomment %}
         </div>
   </header>
 

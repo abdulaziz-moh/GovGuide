@@ -34,7 +34,7 @@ header{
 
 .left-container {
     width: 50%;
-    border-radius: 50px 30% 30% 50px;
+    border-radius: 50px 40% 40% 50px;
     background: linear-gradient(to right, #7081d1, #4e25ac);
     display: flex;
     justify-content: center;
@@ -56,53 +56,60 @@ header{
 }
 
 /* gfljk;slhdfdsjf;kbnf */
-  .form-group {
-    display: grid;
-  }
-  .form-group input {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    background: #f1f1f1ff;
-  }
-  .submit-button{
-    display: flex;
-    justify-content:center;
+.form-group {
+  display: grid;
+}
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background: #f1f1f1ff;
+}
+.submit-button{
+  display: flex;
+  justify-content:center;
 
-  }
-  .left-button {
-    color: white;
-    padding: 7px 30px;
-    margin: 10px;
-    border: 2px solid #4CAF50;
-    border-radius: 5px;
+}
+.left-button {
+  text-decoration: none;
+  color: white;
+  padding: 7px 30px;
+  margin: 10px;
+  border: 2px solid #4CAF50;
+  border-radius: 5px;
 
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    font-weight: bold;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
 
-    cursor: pointer;
-    background: linear-gradient(to right, #7563e6ff, #4630d1);
-  }
+  cursor: pointer;
+  background: linear-gradient(to right, #7563e6ff, #4630d1);
+}
+.left-button:hover{
+    background:linear-gradient(to right, #0073e6, #a193fb);
+}
 
-    .right-button {
-    color: white;
-    padding: 7px 30px;
-    margin: 10px;
-    border: 2px solid #7563e6ff;
-    border-radius: 5px;
+.right-button {
+  color: white;
+  padding: 7px 30px;
+  margin: 10px;
+  border: 2px solid #7563e6ff;
+  border-radius: 5px;
 
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    font-weight: bold;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
 
-    cursor: pointer;
-    background: linear-gradient(to right, #7563e6ff, #4630d1);
-  }
+  cursor: pointer;
+  background: linear-gradient(to right, #7563e6ff, #4630d1);
+}
+.right-button:hover{
+    background:linear-gradient(to right, rgb(161, 147, 251), #0073e6);
+}
 /* jgfjrke[pthojitrpegjkjf */
 
 

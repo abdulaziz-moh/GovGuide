@@ -63,7 +63,7 @@
 
             <!-- Comment -->
             {{ form.comment.errors }}
-            <textarea class="comment" name="comment" placeholder="Write your comment...">{{ form.comment.value }}</textarea>
+            <textarea class="comment" name="comment" placeholder="Write your comment...">{{ form.comment.value|default:"" }}</textarea>
 
             <!-- Submit -->
             <div class="submit">
