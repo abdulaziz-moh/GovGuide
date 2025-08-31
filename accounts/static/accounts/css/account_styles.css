@@ -34,7 +34,7 @@ header{
 
 .left-container {
     width: 50%;
-    border-radius: 50px 30% 30% 50px;
+    border-radius: 50px 40% 40% 50px;
     background: linear-gradient(to right, #7081d1, #4e25ac);
     display: flex;
     justify-content: center;
