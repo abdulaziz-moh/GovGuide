@@ -1,3 +1,18 @@
+#login_button {
+    color: white;
+    padding: 7px 20px;
+    margin: 10px;
+    border: 2px solid #7563e6ff;
+    border-radius: 5px;
+
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    background: linear-gradient(to right, #7563e6ff, #4630d1);
+}
+#login_button:hover{
+    background:linear-gradient(to right, rgb(161, 147, 251), #0073e6);
+}
 /* Sidebar footer */
 
 .sidebar-footer {

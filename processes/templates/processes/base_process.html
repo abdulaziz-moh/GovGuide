@@ -16,12 +16,13 @@
 <body>
     <div class = "nav-bar">
 
-        <img src="{% static 'processes/images/newlogo.png' %}" alt="logo">
+        <a href="{% url 'process_list' %}"><img src="{% static 'processes/images/newlogo.png' %}" alt="logo"> </a>
         <div class="icons">
-            <a href="#"><i class="fa-solid fa-house" style="font-size:24px"></i></a>
-            <a href="#"><i class="fa-regular fa-circle-question" style="font-size:24px"></i></a>
-            <a href="#"><i class="fa-solid fa-bell" style="font-size:24px"></i></a>
-            <a href="#"><i class="fa-solid fa-magnifying-glass" style="font-size:24px"></i></a>
+            <a href="{% url 'process_list' %}"><i class="fa-solid fa-house" style="font-size:24px"></i></a>
+            <a href="{% url 'contact_us' %}"><i class="fa-regular fa-circle-question" style="font-size:24px"></i></a>
+            {% block notification_login %}
+                <a href="{% url 'notification_page' %}"><i class="fa-solid fa-bell" style="font-size:24px"></i></a>
+            {% endblock %}
             
         </div>
         <div class="search">

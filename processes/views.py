@@ -22,7 +22,8 @@ def process_list(request):
         return render(request, 'processes/partials/process_items.html',{'page_obj':page_obj})
     
     # for initial page load, render the full page
-    return render(request, 'processes/list.html',{'page_obj':page_obj})
+    user = request.user
+    return render(request, 'processes/list.html',{'page_obj':page_obj, 'user':user})
 
 
 def process_detail(request, pk):
@@ -78,7 +79,8 @@ def create_process_steps(request):
         'formset': formset,
     })
 
-
+def success_page(request):
+    return render(request,"processes/success_page.html")
              
 
 @login_required
@@ -86,3 +88,9 @@ def process_delete(request, pk):
     pass
 def baseprocess(request):
     return render(request, 'processes/base_process.html')
+
+@login_required
+def personal_posts(request):
+    user = request.user
+    posts = user.processes.all()
+    return render(request,"processes/personal_posts.html", {'user':user,'posts':posts})

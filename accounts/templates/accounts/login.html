@@ -10,7 +10,8 @@
 {% block left %}
     <h2>Hello Friend ✋!</h2>
     <p> Don't have an account?</p>
-    <button type= submit class = 'left-button'>Signup</button>
+    <a href="{% url 'signup' %}" class="left-button">Signup</a>
+
 {% endblock %}
 {% block right %}
     <h1 style = "font-family: Arial, sans-serif; font-weight: bold;">Sign In</h1>

@@ -25,9 +25,10 @@ html, body {
 
     z-index: 10; /* keep it above scrolling content */
 }
-
-.nav-bar img {
+.nav-bar a{
     padding: 5%;
+}
+.nav-bar img {
     height: 65px; /* prevents it from getting too big */
     width: 65px;
     border-radius: 50%;
