@@ -1,0 +1,99 @@
+{% extends "processes/base_process.html" %}
+{% load static %}
+{% block head %} 
+    <title>Profile </title>
+    <link rel="stylesheet" href="{% static 'processes/css/lists_style.css' %}">
+    <link rel="stylesheet" href="{% static 'accounts/css/profile_style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+{% endblock %}
+
+{% block left-section %}
+
+    <div class="profile-section">
+        <div class="profile-header">
+            <img src="{% static 'processes/images/profile.png' %}" alt="Profile Picture">
+            <span class="username"> 
+                    {{ user.first_name }}
+            </span>
+            <i class="fa-solid fa-caret-down dropdown-icon"></i>
+        </div>
+        <ul class="dropdown-menu">
+            <li><a href="{% url 'profile' %}"><i class="fa-solid fa-user"></i> Profile</a></li>
+            <li><a href="{% url 'personal_posts' %}"><i class="fa-solid fa-paper-plane"></i> Posts</a></li>
+            <li><a href="{% url 'settings' %}"><i class="fa-solid fa-gear"></i> Settings</a></li>
+            <li><a href="{% url 'logout' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sign Out</a></li>
+        </ul>
+
+    </div>
+
+    <div class="sidebar-footer">
+        <p>&copy; 2025 GOVGUIDE&trade;</p>
+        <p> All rights reserved</p>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const profileSection = document.querySelector(".profile-section");
+            profileSection.addEventListener("click", function() {
+                profileSection.classList.toggle("active");
+            });
+        });
+    </script>
+
+{% endblock %}
+
+{% block main-content %}
+
+        <form method="post">
+            {% csrf_token %}
+        <div class="profile">
+            <div class="row">
+                <i class="fa-solid fa-user" style="font-size:32px"></i>
+            </div>
+            <div class="row">
+                <div class="name-input-group">
+                    <p>Username</p>
+                    {{ form.username }}
+                    {% if form.username.errors %}
+                        <span> {{ form.username.errors }}</span>
+                    {% endif %}
+                </div>
+                <div class="name-input-group">
+                    <p>First Name</p>
+                    {{ form.first_name }}
+                    {% if form.first_name.errors %}
+                        <span> {{ form.first_name.errors }}</span>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="name-input-group">
+                    <p>Last Name</p> 
+                    {{ form.last_name }}
+                    {% if form.last_name.errors %}
+                        <span> {{ form.last_name.errors }}</span>
+                    {% endif %}
+                </div>
+                <div class="name-input-group">
+                    <p>Email</p>
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                        <span> {{ form.email.errors }}</span>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <button type="submit" class = "submit-button">Save</button>
+            </div>
+        </div>
+        </form>
+        <div class="row">
+            <a href="{% url 'changepassword' %}"><i class="fa-solid fa-file-pen"></i> <p>Change Your Password</p></a>
+            <a href="{% url 'delete_account' %}"><i class="fa-solid fa-trash-can"></i> <p>Delete Your Account</p></a>
+        </div>
+    
+    {% comment %} try to include a pop up box for delete a process {% endcomment %}
+    {% include 'processes/partials/process_items.html' with page_obj=page_obj %} 
+
+    
+{% endblock %}

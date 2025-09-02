@@ -28,3 +28,8 @@ class SignupForm(UserCreationForm):
         self.fields['username'].label = False
         self.fields['password1'].label = False
         self.fields['password2'].label = False
+        
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['username', 'first_name', 'last_name', 'email']

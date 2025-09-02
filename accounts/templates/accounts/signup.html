@@ -1,7 +1,7 @@
 {% extends "accounts/base_forms.html" %}
 {% load static %}
 {% block head %}
-    <link rel = 'stylesheet' href = "{% static 'accounts/css/styles.css' %}">
+    <link rel = 'stylesheet' href = "{% static 'accounts/css/account_styles.css' %}">
 
 {% endblock %}
 {% block title %}
@@ -20,11 +20,29 @@
   {% csrf_token %}
     <div class="form-group">
         {{ form.first_name}}
+        {% if form.first_name.errors %}
+            <span> {{ form.first_name.errors }}</span>
+        {% endif %}
         {{ form.last_name }}
+        {% if form.last_name.errors %}
+            <span> {{ form.last_name.errors }}</span>
+        {% endif %}
         {{ form.username }}
+        {% if form.username.errors %}
+            <span> {{ form.username.errors }}</span>
+        {% endif %}
         {{ form.email }}
+        {% if form.email.errors %}
+            <span> {{ form.email.errors }}</span>
+        {% endif %}
         {{ form.password1 }}
+        {% if form.password1.errors %}
+            <span> {{ form.password1.errors }}</span>
+        {% endif %}
         {{ form.password2 }}
+        {% if form.password2.errors %}
+            <span> {{ form.password2.errors }}</span>
+        {% endif %}
 
     </div>
     <div class = 'submit-button'>

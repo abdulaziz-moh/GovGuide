@@ -1,7 +1,7 @@
 {% extends "accounts/base_forms.html" %}
 {% load static %}
 {% block head %}
-    <link rel = 'stylesheet' href = "{% static 'accounts/css/styles.css' %}">
+    <link rel = 'stylesheet' href = "{% static 'accounts/css/account_styles.css' %}">
 
 {% endblock %}
 {% block title %}
@@ -23,10 +23,19 @@
         {{ form.username }}
         {{ form.password }}
 
+        {% if form.non_field_errors %}
+            <div class="non-field-errors">
+                {% for error in form.non_field_errors %}
+                <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %} 
+
     </div>
     <div class = 'submit-button'>
         <button type="submit" class = 'right-button'>Login</button>
     </div>
+    
 
 </form>
 

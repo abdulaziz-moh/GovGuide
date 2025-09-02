@@ -5,6 +5,9 @@ urlpatterns = [
     path('signup/',views.signup_veiw, name = 'signup'),
     path('login/',views.login_view, name = 'login'),
     path('logout/',views.logout_view, name = 'logout'),
+    path("profile/", views.edit_profile, name = "profile"),
+    path("delete_account/",views.delete_account, name="delete_account"),
+
     
     # change password needs 2 templates
     path('changepassword/',auth_views.PasswordChangeView.as_view(

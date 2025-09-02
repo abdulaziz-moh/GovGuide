@@ -244,3 +244,27 @@
   background-clip: text;
   color: transparent; /* Fallback for browsers that don't support text-fill-color */
 }
+
+.edit-delete-buttons{
+
+}
+.edit-delete-buttons{
+    display:flex;
+    justify-content: space-between;
+    color: black;
+}
+
+.edit-delete-buttons a {
+    display: flex;
+    align-items: center;
+    gap:0.5rem;
+    padding: 0 1rem;
+    border-radius: 10px;
+    font-family: sans-serif;
+    text-decoration: none;
+    color:black;
+}
+.edit-delete-buttons :hover{
+    color: red;
+    background: #86b9fc;
+}
