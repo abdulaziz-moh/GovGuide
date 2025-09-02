@@ -1,0 +1,79 @@
+.profile {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 1rem;
+
+    background-color: #e8eaf0;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px #0000001a;
+    border: 1px solid #3366ff;
+    padding: 1.5rem;
+}
+.row{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+    /* margin: 1rem 0; */
+    
+}
+.name-input-group {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* make it equally fill the available space */
+}
+
+.name-input-group input {
+    font-family: sans-serif;
+    font-size: 16px;
+
+    width: 100%; /* This is now correct because the parent flex item (.one) will handle the width */
+    padding: 0.6rem 1rem;
+    border-radius: 10px;
+    border: none;
+    /* box-shadow: 0 2px 8px #0000001a; */
+    border: 1px solid black;
+    box-sizing: border-box; /* Ensures padding doesn't increase total width */
+}
+
+.submit-button{
+    
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+
+    background-color: #aec5ff;
+    padding: 7px 15px;
+    margin-top: 10px;
+
+    border-radius: 10px;
+    box-shadow: 0 2px 8px #0000001a;
+    /* border: 1px solid #3366ff; */
+
+    font-size: 20px;
+    border: 1px solid rgb(112, 147, 252);
+    /* border:none; */
+}
+.submit-button:hover{
+    transform: scale(1.1);
+}
+
+.row a {
+    font-family: sans-serif;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap:0.5rem;
+    padding: 0 1rem;
+
+    border-radius: 10px;
+    
+    color:black;
+}
+.row a:hover{
+    color: #ff0000;
+    background: #dfdfdf;
+}
+.name-input-group span{
+    color: red;
+}

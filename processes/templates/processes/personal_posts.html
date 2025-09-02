@@ -1,2 +1,70 @@
 {% extends "processes/base_process.html" %}
 {% load static %}
+{% block head %} 
+    <title>Process List</title>
+    <link rel="stylesheet" href="{% static 'processes/css/lists_style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+{% endblock %}
+
+{% block left-section %}
+
+    <div class="profile-section">
+        <div class="profile-header">
+            <img src="{% static 'processes/images/profile.png' %}" alt="Profile Picture">
+            <span class="username"> 
+                    {{ user.first_name }}
+            </span>
+            <i class="fa-solid fa-caret-down dropdown-icon"></i>
+        </div>
+        <ul class="dropdown-menu">
+            <li><a href="{% url 'profile' %}"><i class="fa-solid fa-user"></i> Profile</a></li>
+            <li><a href="{% url 'personal_posts' %}"><i class="fa-solid fa-paper-plane"></i> Posts</a></li>
+            <li><a href="{% url 'settings' %}"><i class="fa-solid fa-gear"></i> Settings</a></li>
+            <li><a href="{% url 'logout' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sign Out</a></li>
+        </ul>
+
+    </div>
+
+    <div class="sidebar-footer">
+        <p>&copy; 2025 GOVGUIDE&trade;</p>
+        <p> All rights reserved</p>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const profileSection = document.querySelector(".profile-section");
+            profileSection.addEventListener("click", function() {
+                profileSection.classList.toggle("active");
+            });
+        });
+    </script>
+
+{% endblock %}
+
+{% block main-content %}
+{% for process in page_obj %}
+    <div class="post">
+        <div class="post-header">
+            <img src="{% static 'processes/images/profile.png' %}" alt="Profile">
+            <div>
+                <h4 class="post-username">{{ process.created_by.first_name }}</h4>
+                <span class="post-time">{{ process.created_at|date:"M d, Y H:i" }}</span>
+            </div>
+            <div id = "rate">⭐ {{ process.avg_rating }} </div>
+        </div>
+        <div class="post-body">
+            <h3 class="post-title">{{ process.title }}</h3>
+            <p class="post-description">
+                {{ process.description }}
+            </p>
+            {% if process.image %}
+                <img src="{{ process.image.url }}" alt="Post Image" class="post-image">
+            {% endif %}
+            <div class="edit-delete-buttons">
+                <a href = "{% url 'process_delete' process.pk %}"><i class="fa-solid fa-trash-can"></i><p>Delete</p></a>
+                <a href = "{% url 'process_update' process.pk %}"><i class="fa-solid fa-file-pen"></i><p>Edit</p></a>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+{% endblock %}

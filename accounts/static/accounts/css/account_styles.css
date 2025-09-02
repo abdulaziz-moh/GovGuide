@@ -110,6 +110,11 @@ header{
 .right-button:hover{
     background:linear-gradient(to right, rgb(161, 147, 251), #0073e6);
 }
+
+.non-field-errors{
+  max-width: 250px;
+  color:red;
+}
 /* jgfjrke[pthojitrpegjkjf */
 
 

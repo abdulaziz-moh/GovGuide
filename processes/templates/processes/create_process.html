@@ -34,8 +34,11 @@
     {{ formset.management_form }}
     <div id="form-container" class="form-container">
         <div class="vertical-line"></div>
+        {% for data in steps_queryset %}
+            {{ data.step_name }}
+        {% endfor %}
+
         {% for form in formset %}
-        
             <div class="step-form">
                 {{ form.step_name }}
                 {% if form.step_name.errors %}
