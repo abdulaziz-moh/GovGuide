@@ -9,7 +9,12 @@
 <form method="post">
     {% csrf_token %}
     {{process_form.label_tag}}
-    <h1>Create Process</h1>
+    {% if process_form.instance.pk %}
+        <h1>Update Process <h1>
+    {% else %} 
+        <h1>Create Process</h1>
+    {% endif %}
+    
     <div class="create-process">
         <p>
             {{ process_form.title.label_tag }}
@@ -34,12 +39,10 @@
     {{ formset.management_form }}
     <div id="form-container" class="form-container">
         <div class="vertical-line"></div>
-        {% for data in steps_queryset %}
-            {{ data.step_name }}
-        {% endfor %}
 
         {% for form in formset %}
             <div class="step-form">
+                {{ form.id }}  {# <-- this is the hidden primary key field, REQUIRED(if it doesn't exist the update doesn't create an id making a formset invalid ) #}
                 {{ form.step_name }}
                 {% if form.step_name.errors %}
                     <span style = "color: red">{{ form.step_name.errors }}</span>
@@ -49,6 +52,9 @@
                 {% if form.description.errors %}
                     <span style = "color: red">{{ form.description.errors }}</span>
                 {% endif %}
+                {{ form.DELETE }}
+                <button type="button" class="remove-step"><i class="fa-solid fa-trash-can"></i><p>Remove<p></button>
+
                 
             </div>
         {% endfor %}
@@ -57,6 +63,8 @@
     <!-- hidden empty form template -->
     <div id="empty-form" style="display:none;">
         <div class="step-form">
+                {{ form.id }}  {# <-- this is the hidden primary key field, REQUIRED #}
+
                 {{ formset.empty_form.step_name }}
                 {% if formset.empty_form.step_name.errors %}
                     <span style = "color: red">{{ formset.empty_form.step_name.errors }}</span>
@@ -65,8 +73,11 @@
                 {{ formset.empty_form.description }}
                 {% if formset.empty_form.description.errors %}
                     <span style = "color: red">{{ formset.empty_form.description.errors }}</span>
-                {% endif %}         
-            
+                {% endif %}
+                {{ formset.empty_form.DELETE }}
+                <button type="button" class="remove-step"><i class="fa-solid fa-trash-can"></i><p>Remove<p></button>
+
+ 
             {% comment %} {{ formset.empty_form.as_p }} {% endcomment %}
         </div>
     </div>
@@ -80,34 +91,47 @@
 document.addEventListener('DOMContentLoaded', function() {
     const formContainer = document.getElementById('form-container');
     const addButton = document.getElementById('add-step');
-    const totalForms = document.getElementById('id_steps-TOTAL_FORMS'); 
+    const totalForms = document.getElementById('id_steps-TOTAL_FORMS');
     const emptyFormHtml = document.getElementById('empty-form').innerHTML;
 
     let formCount = parseInt(totalForms.value);
 
-    // Add a null check to ensure the elements are found before adding the event listener
+    // Add new step form
     if (addButton && formContainer && totalForms) {
         addButton.addEventListener('click', function() {
-            // Create a temporary div to parse the HTML string
             const tempDiv = document.createElement('div');
             tempDiv.innerHTML = emptyFormHtml.replace(/__prefix__/g, formCount);
 
-            // Get the new form element from the temporary div
             const newFormElement = tempDiv.firstElementChild;
-
-            // Append the new form element to the container
             formContainer.appendChild(newFormElement);
 
-            // Scroll the new form into view
             newFormElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
             formCount++;
             totalForms.value = formCount;
+
+            attachRemoveHandler(newFormElement);
         });
-    } else {
-        console.error("One or more elements not found. Check your HTML IDs.");
     }
+
+    // Attach remove behavior
+    function attachRemoveHandler(stepDiv) {
+        const removeBtn = stepDiv.querySelector('.remove-step');
+        const deleteField = stepDiv.querySelector('input[name$="-DELETE"]');
+
+        if (removeBtn && deleteField) {
+            removeBtn.addEventListener('click', function() {
+                deleteField.checked = true;   // ✅ Mark for deletion
+                stepDiv.style.display = 'none';
+            });
+        }
+    }
+
+
+    // Attach to already existing forms
+    document.querySelectorAll('.step-form').forEach(attachRemoveHandler);
 });
+
 </script>
 
 {% endblock %}

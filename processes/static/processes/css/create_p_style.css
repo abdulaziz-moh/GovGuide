@@ -62,6 +62,31 @@ input[type="text"], textarea {
       
     position: relative; /* Keep this to create a positioning context for a different element */
 }
+input[name$="-DELETE"] {
+    /* display: none; */
+}
+.remove-step{
+    border: 0px;
+    background: white ;
+    margin-top:5px;
+    padding:0px 5px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+}
+.remove-step p{
+
+    font-family: Arial, Helvetica, sans-serif;
+    padding-left: 3px;
+    /* font-weight: lighter; */
+}
+.remove-step:hover{
+    color:red;
+    /* transform: scale(1.2); */
+    cursor: pointer;
+    background-color: rgba(204, 204, 204,0.5);
+
+}
 
 .step-form::before {
   content: '';
