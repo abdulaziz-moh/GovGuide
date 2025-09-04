@@ -1,29 +1,30 @@
-from . models import Process, Step
 from django import forms
 from django.forms import inlineformset_factory
+from .models import Process, Step
 
 class ProcessForm(forms.ModelForm):
-    
     class Meta:
         model = Process
-        fields = ('title','description')
+        fields = ('title', 'description')
 
 class StepForm(forms.ModelForm):
     class Meta:
         model = Step
-        fields = ['step_name', 'description']
-
+        fields = ['step_name', 'description','order_number']
+        widgets = {
+            'order_number': forms.HiddenInput(),
+        }
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # Add placeholders
         self.fields['step_name'].widget.attrs['placeholder'] = 'Step name'
         self.fields['description'].widget.attrs['placeholder'] = 'Description'
+        self.fields['order_number'].required = False   # 👈 make it optional(if it's required the formset.is_valid() will mark it invalid because it's empty when sent from the form in html-( we fill it with data inside our view after checking the form.is_valid() method ))
 
 
 StepFormSet = inlineformset_factory(
     Process,
     Step,
-    form=StepForm,   # 👈 use custom form here
-    extra=1,
-    can_delete=True
+    form=StepForm,
+    extra=0,
+    can_delete=True  # ✅ this enables deletion
 )

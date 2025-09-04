@@ -32,15 +32,15 @@ class Step(models.Model):
     description = models.TextField()
     process_id = models.ForeignKey(Process, on_delete=models.CASCADE , related_name='steps')
     
-    def save(self,*args,**kwargs):  # this save method first automatically add a value for the order_number and then save it to db(because we only get data other than the order_number from the form)
-                                    # this method will be called in the forms.py after the form check validations 
-        if not self.order_number:
-            lasts_step_obj = Step.objects.filter(process_id = self.process_id).order_by('-order_number').first()
-            if lasts_step_obj:
-                self.order_number = lasts_step_obj.order_number + 1
-            else:
-                self.order_number = 1
-        super().save(*args, **kwargs)
+    # def save(self,*args,**kwargs):  # this save method first automatically add a value for the order_number and then save it to db(because we only get data other than the order_number from the form)
+    #                                 # this method will be called in the forms.py after the form check validations 
+    #     if not self.order_number:
+    #         lasts_step_obj = Step.objects.filter(process_id = self.process_id).order_by('-order_number').first()
+    #         if lasts_step_obj:
+    #             self.order_number = lasts_step_obj.order_number + 1
+    #         else:
+    #             self.order_number = 1
+    #     super().save(*args, **kwargs)
         
     class Meta:
         ordering = ['order_number']

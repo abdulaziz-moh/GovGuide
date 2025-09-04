@@ -65,8 +65,11 @@ def create_process_steps(request):
             new_process.save()
 
             steps = formset.save(commit=False)
+            order = 1
             for step in steps:
                 step.process_id = new_process
+                step.order_number = order
+                order += 1
                 step.save()
 
             return redirect('success_page')
@@ -81,39 +84,55 @@ def create_process_steps(request):
 # @login_required
 # def process_update(request, pk):
 #     return render(request,"processes/success_page.html")
+
 @login_required
 def process_update(request, pk):
     process = get_object_or_404(Process, id=pk)
 
     if request.method == 'POST':
+        
         process_form = ProcessForm(request.POST, instance=process)
-        formset = StepFormSet(request.POST, instance=process, prefix='steps')
+        formset = StepFormSet(request.POST, instance=process, prefix='steps')  # 👈 FIX
+
+        if process_form.is_valid():
+            print("process valid")
+        if formset.is_valid():
+            print("formset is valid")
+        print("formset errors:", formset.errors)
+        print("deleted forms:", [f.cleaned_data for f in formset.deleted_forms])
 
         if process_form.is_valid() and formset.is_valid():
+            print("valid")
             updated_process = process_form.save(commit=False)
             updated_process.created_by = request.user
             updated_process.save()
 
-            # link formset to updated process
-            formset.instance = updated_process
-            formset.save()
+            formset.instance = updated_process   # redundant but safe
+            
+            steps = formset.save(commit=False)
+
+            # Delete steps marked for removal
+            for obj in formset.deleted_objects:
+                obj.delete()
+            order = 1
+            for step in steps:
+                step.process = updated_process
+                step.order_number = order
+                order += 1
+                step.save()
+                
+            # formset.save()                       # 👈 will now update/delete
 
             return redirect('process_update', pk=updated_process.id)
-
     else:
         process_form = ProcessForm(instance=process)
-        formset = StepFormSet(instance=process, prefix='steps')
+        formset = StepFormSet(instance=process, prefix='steps')  # 👈 FIX
 
-    return render(
-        request,
-        'processes/create_process.html',
-        {
-            'process_form': process_form,
-            'formset': formset,
-        }
-    )
-
-        
+    return render(request, 'processes/create_process.html', {
+        'process_form': process_form,
+        'formset': formset,
+    })
+ 
 def success_page(request):
     return render(request,"processes/success_page.html")
              
