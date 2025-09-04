@@ -87,6 +87,7 @@
     </div>
 </form>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const formContainer = document.getElementById('form-container');
@@ -121,8 +122,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (removeBtn && deleteField) {
             removeBtn.addEventListener('click', function() {
-                deleteField.checked = true;   // ✅ Mark for deletion
-                stepDiv.style.display = 'none';
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "This step will be deleted.",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#d33",
+                    cancelButtonColor: "#3085d6",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        deleteField.checked = true;
+                        stepDiv.style.display = 'none';
+                    }
+                });
+
             });
         }
     }

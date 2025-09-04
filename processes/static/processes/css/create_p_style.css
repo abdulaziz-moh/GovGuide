@@ -62,9 +62,6 @@ input[type="text"], textarea {
       
     position: relative; /* Keep this to create a positioning context for a different element */
 }
-input[name$="-DELETE"] {
-    /* display: none; */
-}
 .remove-step{
     border: 0px;
     background: white ;

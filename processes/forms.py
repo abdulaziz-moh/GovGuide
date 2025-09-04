@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import inlineformset_factory
-from .models import Process, Step
+from . models import Process, Step, AppComment
 
 class ProcessForm(forms.ModelForm):
     class Meta:
@@ -28,3 +28,8 @@ StepFormSet = inlineformset_factory(
     extra=0,
     can_delete=True  # ✅ this enables deletion
 )
+
+class AppCommentForm(forms.ModelForm):
+    class Meta:
+        model = AppComment
+        fields =['email','comment']

@@ -4,7 +4,8 @@ from reviews.forms import ReviewForm
 from reviews.models import Review
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
-from . forms import ProcessForm, StepFormSet
+from . forms import ProcessForm, StepFormSet, AppCommentForm
+
 # Create your views here.
 
 def process_list(request):
@@ -22,8 +23,9 @@ def process_list(request):
         return render(request, 'processes/partials/process_items.html',{'page_obj':page_obj})
     
     # for initial page load, render the full page
+    commentform = AppCommentForm()
     user = request.user
-    return render(request, 'processes/list.html',{'page_obj':page_obj, 'user':user})
+    return render(request, 'processes/list.html',{'page_obj':page_obj, 'user':user,'commentform':commentform})
 
 
 def process_detail(request, pk):
@@ -155,3 +157,17 @@ def personal_posts(request):
     user = request.user
     posts = user.processes.all()
     return render(request,"processes/personal_posts.html", {'user':user,'page_obj':posts})
+
+def add_app_comment(request):
+    if request.method == 'POST':
+        commentform = AppCommentForm(request.POST)
+        if commentform.is_valid():
+            commentform.save()
+            
+            commentform = AppCommentForm()
+            return render(request, 'processes/partials/comments.html', {
+                'commentform': commentform,
+                'success': True,   # so we can show a success message
+            })
+    commentform = AppCommentForm()
+    return render(request, 'processes/partials/comments.html', {'commentform': commentform})
