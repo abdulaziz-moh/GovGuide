@@ -6,6 +6,9 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from . forms import ProcessForm, StepFormSet, AppCommentForm
 from django.db.models import Q
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .serializers import ProcessSerializer
 
 # Create your views here.
 
@@ -202,3 +205,10 @@ def add_app_comment(request):
             })
     commentform = AppCommentForm()
     return render(request, 'processes/partials/comments.html', {'commentform': commentform})
+# ================================ API ====================================== #
+
+@api_view(['GET'])
+def process_share(request):
+    processes = Process.objects.all()
+    serializer = ProcessSerializer(processes, many=True)
+    return Response(serializer.data)

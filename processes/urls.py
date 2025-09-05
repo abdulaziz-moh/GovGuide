@@ -12,6 +12,7 @@ urlpatterns = [
     path('personal_posts/',views.personal_posts, name="personal_posts"),
     path('success_page/',views.success_page, name = "success_page"),
     # path('notification_page/',views.baseprocess, name = "notification_page"),
-    path("add_app_comment/",views.add_app_comment, name = "add_app_comment"),
+    path('add_app_comment/',views.add_app_comment, name = "add_app_comment"),
 
+    path('api/processes/',views.process_share, name = "process_share"),
 ]
