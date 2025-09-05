@@ -107,11 +107,18 @@
     display: block;
 }
 
-
-#comments-box input{
-    /* background-color: greenyellow; */
+#comment-section {
+    transition: box-shadow 0.2s ease, border-color 0.1s ease;
+    border-radius: 16px; /* makes the border rounded */
+    padding: 5px;
+    margin-right: 5px;
 }
 
+/* Highlight state */
+#comment-section.highlight {
+    border: 1px solid #49fa4f; /* green border */
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.8); /* glowing effect */
+}
 
 #comments-box textarea,input{
     font-family: Arial, sans-serif;

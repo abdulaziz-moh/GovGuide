@@ -20,7 +20,7 @@
         <ul class="dropdown-menu">
             <li><a href="{% url 'profile' %}"><i class="fa-solid fa-user"></i> Profile</a></li>
             <li><a href="{% url 'personal_posts' %}"><i class="fa-solid fa-paper-plane"></i> Posts</a></li>
-            <li><a href="{% url 'settings' %}"><i class="fa-solid fa-gear"></i> Settings</a></li>
+            {% comment %} <li><a href="{% url 'settings' %}"><i class="fa-solid fa-gear"></i> Settings</a></li> {% endcomment %}
             <li><a href="{% url 'logout' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sign Out</a></li>
         </ul>
 
