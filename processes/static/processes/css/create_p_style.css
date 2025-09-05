@@ -26,7 +26,6 @@ input[type="text"], textarea {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-
 }
 
 .create-process textarea{
@@ -40,7 +39,8 @@ input[type="text"], textarea {
 .step-form textarea {
     resize: none; /* Allows the user to resize the textarea vertically */
     field-sizing: content;
-    min-height: 80px;}
+    min-height: 80px;
+}
 
 .step-form {
     font-family: Arial, sans-serif;
@@ -48,18 +48,13 @@ input[type="text"], textarea {
     color:#858585;
     background: #fff;
     max-width: 700px;
-    
     margin-left: 5rem; /* Make space for the line */
     margin-right: 1rem;
     margin-bottom: 20px;
-
-    padding: 1rem;
-    /* padding-right: 1rem; */
-    
+    padding: 1rem;    
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     border: 1.5px solid #87fd6a;
-      
     position: relative; /* Keep this to create a positioning context for a different element */
 }
 .remove-step{
@@ -72,17 +67,13 @@ input[type="text"], textarea {
     align-items: center;
 }
 .remove-step p{
-
     font-family: Arial, Helvetica, sans-serif;
     padding-left: 3px;
-    /* font-weight: lighter; */
 }
 .remove-step:hover{
     color:red;
-    /* transform: scale(1.2); */
     cursor: pointer;
     background-color: rgba(204, 204, 204,0.5);
-
 }
 
 .step-form::before {
@@ -111,7 +102,6 @@ input[type="text"], textarea {
     font-size: 20px;
     border: 1px solid rgb(112, 147, 252);
     border:none;
-
 }
 
 #save:hover,#add-step:hover{
@@ -126,7 +116,6 @@ input[type="text"], textarea {
 }
 
 #add-step{
-    /* background-color: #e0dfdf; */
     cursor: pointer;
     transition: transform 0.2s ease, color 0.2s ease;
 }

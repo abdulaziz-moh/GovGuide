@@ -18,12 +18,7 @@
     align-items: center;
     justify-content: space-between;
 }
-.title p{
 
-}
-.title h2{
-
-}
 .title .profile{
     background-color: #e8eaf0;
     display: flex;
@@ -33,21 +28,18 @@
     padding: 0.5rem 1rem;
     border-radius: 10px;
 }
-
 /* ============================= Steps section ========================== */
+
 #step-text{
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 .steps-section{
-    /* background-color: aqua; */
     font-family: sans-serif;
     margin-left: 5rem; /* make space for the line */
     margin-right: 1rem;
     position: relative; /* Keep this to create a positioning context for a different element */
-
 }
 
 /* vertical line */
@@ -80,23 +72,17 @@
 
 
 .steps-section #order_number{
-    /* background-color: greenyellow; */
     color:gray;
     font-size: 12px;
 }
 .steps-section #step_name{
-    /* background-color: yellow; */
     font-size: 20px;
     font-weight: bold;
 }
 .steps-section #description{
-    /* background-color: aqua; */
     margin-left: 1rem;
     margin-bottom: 3rem;
-
-    
 }
-
 
 :root {
   --star-size: 30px;
@@ -108,7 +94,6 @@
   display: flex;
   flex-direction: row-reverse; /* Reverse the order of stars */
   justify-content: center;
-  /* margin-bottom: 1rem; */
 }
 
 .rating > input {

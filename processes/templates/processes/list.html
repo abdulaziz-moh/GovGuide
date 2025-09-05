@@ -8,7 +8,6 @@
 {% endblock %}
 
 {% block search %}
-    {% comment %} <input type="text" placeholder="Search"> {% endcomment %}
     {% comment %} this used for get request on the url section  {% endcomment %}
     <form method="get" 
         hx-get="{% url 'process_list' %}" 
@@ -26,7 +25,6 @@
 
 {% block notification_login %}
     {% if user.is_authenticated %}
-        {% comment %} {% pass %} {% endcomment %}
         {% comment %} <a href="{% url 'notification_page' %}"><i class="fa-solid fa-bell" style="font-size:24px"></i></a> {% endcomment %}
     {% else %}
         <a href="{% url 'login' %}" id="login_button" style="text-decoration:none; backgorund:"> Login </a>

@@ -25,7 +25,6 @@ class Process(models.Model):
         
         return self.avg_rating
         
-
 class Step(models.Model):
     order_number = models.IntegerField(default=1)
     step_name = models.CharField(max_length=100)
