@@ -92,7 +92,6 @@
             <a href="{% url 'delete_account' %}"><i class="fa-solid fa-trash-can"></i> <p>Delete Your Account</p></a>
         </div>
     
-    {% comment %} try to include a pop up box for delete a process {% endcomment %}
     {% include 'processes/partials/process_items.html' with page_obj=page_obj %} 
 
     

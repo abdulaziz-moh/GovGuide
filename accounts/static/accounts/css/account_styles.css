@@ -5,8 +5,6 @@ html, body,main {
 
 }
 
-header{   
-}
 .icon{
     height: 10%;
     display: flex;
@@ -15,21 +13,17 @@ header{
     padding-right: 7%;
 }
 
-
 .container{
     height: 75%;
-
     margin-left: 15%;
     margin-right: 15%;
     margin-top: 4%;
     margin-bottom: 6%;
-
     background-color:aliceblue;
     display: flex;
     justify-content: center;
     align-items: stretch;
     border-radius: 50px;
-
 }
 
 .left-container {
@@ -50,15 +44,13 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
-
-    /* background-color: greenyellow; */
-
 }
 
-/* gfljk;slhdfdsjf;kbnf */
+/* ============================================ */
 .form-group {
   display: grid;
 }
+
 .form-group input {
   width: 100%;
   padding: 10px;
@@ -69,11 +61,12 @@ header{
   font-size: 16px;
   background: #f1f1f1ff;
 }
+
 .submit-button{
   display: flex;
   justify-content:center;
-
 }
+
 .left-button {
   text-decoration: none;
   color: white;
@@ -81,14 +74,13 @@ header{
   margin: 10px;
   border: 2px solid #4CAF50;
   border-radius: 5px;
-
   font-family: Arial, sans-serif;
   font-size: 16px;
   font-weight: bold;
-
   cursor: pointer;
   background: linear-gradient(to right, #7563e6ff, #4630d1);
 }
+
 .left-button:hover{
     background:linear-gradient(to right, #0073e6, #a193fb);
 }
@@ -99,14 +91,13 @@ header{
   margin: 10px;
   border: 2px solid #7563e6ff;
   border-radius: 5px;
-
   font-family: Arial, sans-serif;
   font-size: 16px;
   font-weight: bold;
-
   cursor: pointer;
   background: linear-gradient(to right, #7563e6ff, #4630d1);
 }
+
 .right-button:hover{
     background:linear-gradient(to right, rgb(161, 147, 251), #0073e6);
 }
@@ -115,8 +106,7 @@ header{
   max-width: 250px;
   color:red;
 }
-/* jgfjrke[pthojitrpegjkjf */
-
+/* ============================================ */
 
 @media only screen and (max-width: 960px) {
   .container{

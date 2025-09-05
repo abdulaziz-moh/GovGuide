@@ -19,11 +19,11 @@
         <a href="{% url 'process_list' %}"><img src="{% static 'processes/images/newlogo.png' %}" alt="logo"> </a>
         <div class="icons">
             <a href="{% url 'process_list' %}"><i class="fa-solid fa-house" style="font-size:24px"></i></a>
-            <a href="{% url 'contact_us' %}"><i class="fa-regular fa-circle-question" style="font-size:24px"></i></a>
+            <a href="#" id="contact"><i class="fa-regular fa-circle-question" style="font-size:24px"></i></a>
             {% block notification_login %}
-                <a href="{% url 'notification_page' %}"><i class="fa-solid fa-bell" style="font-size:24px"></i></a>
+                {% comment %} <a href="{% url 'notification_page' %}"><i class="fa-solid fa-bell" style="font-size:24px"></i></a> {% endcomment %}
             {% endblock %}
-            
+
         </div>
         <div class="search">
             {% block search %}
@@ -39,11 +39,7 @@
         <div class="main-content" >
             {% block main-content %}
             {% endblock %}
-
-            {% comment %} <p>this is sample post this is sample postthis is sample post this is sample post this is sample post this is sample post this is sample post </p> {% endcomment %}
         </div>
-     
     </div>
-    
 </body>
 </html>

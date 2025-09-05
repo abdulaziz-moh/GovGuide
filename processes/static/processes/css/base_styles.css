@@ -3,7 +3,6 @@ html, body {
     padding: 0;
     width: 100%;
     background: #f7f7f7;
-    /* height: 100%; */
     overflow: hidden; /* prevent whole page scroll */
 }
 /* ============================== navigation bar ======================================================== */
@@ -34,7 +33,7 @@ html, body {
     border-radius: 50%;
     object-fit: cover;
 }
-/* 1234567890--09876543567890-78trfygvbkju9y ghjhhb,jvj */
+/* ====================================================== */
 .nav-bar .search{
     padding-right: 5%;
 }
@@ -42,7 +41,7 @@ html, body {
     padding: 10px;
     border-radius: 40px;
 }
-/* rtyuhrtygfrjtujghe5e46568709puygfcxvbn87675e8976tygh */
+/* ====================================================== */
 
 .nav-bar .icons {
     padding: 5%;
@@ -61,7 +60,6 @@ html, body {
     color: #0073e6; /* highlight color when hovered */
 }
 /* ============================== navigation bar ======================================================== */
-
 
 .left-section {
     overflow-x: hidden;
@@ -84,9 +82,7 @@ html, body {
     bottom: 0;
 
     width: 75%;
-    /* padding: 1rem; */
     background-color: #f7f7f7;
-
     overflow-y: auto; /*this part scrolls
     z-index: 1;       /* keep it beneath the navbar */
 }
@@ -94,5 +90,4 @@ html, body {
 .main-content{
     max-width: 700px;
     background-color: #f7f7f7;
-
 }

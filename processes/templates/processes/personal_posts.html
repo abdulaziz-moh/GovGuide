@@ -20,7 +20,7 @@
         <ul class="dropdown-menu">
             <li><a href="{% url 'profile' %}"><i class="fa-solid fa-user"></i> Profile</a></li>
             <li><a href="{% url 'personal_posts' %}"><i class="fa-solid fa-paper-plane"></i> Posts</a></li>
-            <li><a href="{% url 'settings' %}"><i class="fa-solid fa-gear"></i> Settings</a></li>
+            {% comment %} <li><a href="{% url 'settings' %}"><i class="fa-solid fa-gear"></i> Settings</a></li> {% endcomment %}
             <li><a href="{% url 'logout' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sign Out</a></li>
         </ul>
 
@@ -61,10 +61,41 @@
                 <img src="{{ process.image.url }}" alt="Post Image" class="post-image">
             {% endif %}
             <div class="edit-delete-buttons">
-                <a href = "{% url 'process_delete' process.pk %}"><i class="fa-solid fa-trash-can"></i><p>Delete</p></a>
-                <a href = "{% url 'process_update' process.pk %}"><i class="fa-solid fa-file-pen"></i><p>Edit</p></a>
+            <a href="{% url 'process_delete' process.pk %}" class="delete-process">
+                <i class="fa-solid fa-trash-can"></i><p>Delete</p>
+            </a>  
+            <a href = "{% url 'process_update' process.pk %}"><i class="fa-solid fa-file-pen"></i><p>Edit</p></a>
             </div>
         </div>
     </div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const deleteLinks = document.querySelectorAll('.delete-process');
+
+    deleteLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault(); // 🚫 stop immediate navigation
+            const href = this.getAttribute('href');
+
+            Swal.fire({
+                title: "Are you sure?",
+                text: "This process will be permanently deleted.",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#d33",
+                cancelButtonColor: "#3085d6",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = href; // ✅ redirect only if confirmed
+                }
+            });
+        });
+    });
+});
+</script>
+</script>
 {% endfor %}
 {% endblock %}

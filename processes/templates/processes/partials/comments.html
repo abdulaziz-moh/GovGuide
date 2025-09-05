@@ -1,0 +1,19 @@
+<div id="comments-box">
+    <h3>Contact Us</h3>
+
+    {% if success %}
+        <p style="color: green;">✅ Thank you! Your message has been sent.</p>
+    {% endif %}
+
+    <form 
+        hx-post="{% url 'add_app_comment' %}" 
+        hx-target="#comments-box" 
+        hx-swap="outerHTML"
+    >
+        {% csrf_token %}
+        {{ commentform.email }}
+        {{ commentform.comment }}
+
+        <button type="submit">Send</button>
+    </form>
+</div>

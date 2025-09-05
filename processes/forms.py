@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import inlineformset_factory
-from .models import Process, Step
+from . models import Process, Step, AppComment
 
 class ProcessForm(forms.ModelForm):
     class Meta:
@@ -28,3 +28,13 @@ StepFormSet = inlineformset_factory(
     extra=0,
     can_delete=True  # ✅ this enables deletion
 )
+
+class AppCommentForm(forms.ModelForm):
+    class Meta:
+        model = AppComment
+        fields =['email','comment']
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args,**kwargs)
+        # Programmatically set placeholders for all other fields
+        self.fields['email'].widget.attrs['placeholder'] = 'Email'
+        self.fields['comment'].widget.attrs['placeholder'] = 'Comment'

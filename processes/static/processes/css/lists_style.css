@@ -21,13 +21,11 @@
     bottom: 0rem;
     left: 0;
     width: 100%;
-    /* background-color: #0073e6; */
     text-align: center;
     padding: 0.5rem;
     font-size: 0.8rem;
     color: #555;
 }
-
 /* Profile Section */
 
 .profile-section {
@@ -64,8 +62,8 @@
 .profile-section.active .dropdown-icon {
     transform: rotate(180deg);
 }
-
 /* Dropdown Menu */
+
 .dropdown-menu {
     padding: 0;
     background: #fff;
@@ -73,7 +71,6 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     display: none; /* makes the block invisible unless the dropdown menu clicked*/
-
 }
 
 .dropdown-menu li {
@@ -107,10 +104,51 @@
     display: block;
 }
 
+#comment-section {
+    transition: box-shadow 0.2s ease, border-color 0.1s ease;
+    border-radius: 16px; /* makes the border rounded */
+    padding: 5px;
+    margin-right: 5px;
+}
+
+/* Highlight state */
+#comment-section.highlight {
+    border: 1px solid #49fa4f; /* green border */
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.8); /* glowing effect */
+}
+
+#comments-box textarea,input{
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    background:#f0f2f6;
+    width: 90%;
+    padding: 7px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+}
+
+#comments-box textarea{
+    resize: none; /* Allows the user to resize the textarea vertically */
+    field-sizing: content;
+    min-height: 70px;
+}
+#comments-box button{
+    border: none;
+    padding: 1px 15px;
+    border-radius: 15px; 
+    box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+    font-size: 16px;
+    border: 1px solid rgb(112, 147, 252);
+}
 
 
 /* ========================================================================================== */
 /* Create Post */
+
 .create-post {
     max-width: 700px;
     margin: 1rem;
@@ -245,9 +283,6 @@
   color: transparent; /* Fallback for browsers that don't support text-fill-color */
 }
 
-.edit-delete-buttons{
-
-}
 .edit-delete-buttons{
     display:flex;
     justify-content: space-between;

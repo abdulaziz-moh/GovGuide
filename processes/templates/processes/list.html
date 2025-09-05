@@ -8,12 +8,24 @@
 {% endblock %}
 
 {% block search %}
-    <input type="text" placeholder="Search">
+    {% comment %} this used for get request on the url section  {% endcomment %}
+    <form method="get" 
+        hx-get="{% url 'process_list' %}" 
+        hx-target="#process-list" 
+        hx-push-url="true">
+        
+        <input type="text" 
+            name="q" 
+            value="{{ query }}" 
+            placeholder="Search processes..." 
+            hx-trigger="keyup changed delay:500ms">
+    </form>
+
 {% endblock %}
 
 {% block notification_login %}
     {% if user.is_authenticated %}
-        <a href="{% url 'notification_page' %}"><i class="fa-solid fa-bell" style="font-size:24px"></i></a>
+        {% comment %} <a href="{% url 'notification_page' %}"><i class="fa-solid fa-bell" style="font-size:24px"></i></a> {% endcomment %}
     {% else %}
         <a href="{% url 'login' %}" id="login_button" style="text-decoration:none; backgorund:"> Login </a>
     {% endif %}
@@ -36,7 +48,7 @@
             <ul class="dropdown-menu">
                 <li><a href="{% url 'profile' %}"><i class="fa-solid fa-user"></i> Profile</a></li>
                 <li><a href="{% url 'personal_posts' %}"><i class="fa-solid fa-paper-plane"></i> Posts</a></li>
-                <li><a href="{% url 'settings' %}"><i class="fa-solid fa-gear"></i> Settings</a></li>
+                {% comment %} <li><a href="{% url 'settings' %}"><i class="fa-solid fa-gear"></i> Settings</a></li> {% endcomment %}
                 <li><a href="{% url 'logout' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sign Out</a></li>
             </ul>
         {% else %}
@@ -49,6 +61,9 @@
     </div>
 
     <div class="sidebar-footer">
+        <div id="comment-section">
+            {% include "processes/partials/comments.html" with commentform=commentform %}     
+        </div>
         <p>&copy; 2025 GOVGUIDE&trade;</p>
         <p> All rights reserved</p>
     </div>
@@ -60,6 +75,31 @@
             });
         });
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const helpLink = document.getElementById("contact"); 
+            const commentBox = document.getElementById("comment-section");
+
+            if (helpLink && commentBox) {
+                helpLink.addEventListener("click", function (event) {
+                    event.preventDefault(); // prevent page reload / navigation
+
+                    // Add highlight
+                    commentBox.classList.add("highlight");
+
+                    // Scroll into view
+                    commentBox.scrollIntoView({ behavior: "smooth", block: "center" });
+
+                    // Remove highlight after 2 seconds
+                    setTimeout(() => {
+                        commentBox.classList.remove("highlight");
+                    }, 1000);
+                });
+            }
+        });
+    </script>
+
+
 
 {% endblock %}
 
@@ -75,7 +115,7 @@
             <a href="{% url 'personal_posts' %}"><i class="fa-solid fa-file-pen"></i> Edit a process</a>
         </div>
     </div>
-
-    {% include 'processes/partials/process_items.html' with page_obj=page_obj %}
-    
+    <div id="process-list">
+        {% include 'processes/partials/process_items.html' with page_obj=page_obj %}
+    </div>
 {% endblock %}
