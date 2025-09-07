@@ -21,13 +21,13 @@ You can watch a demo presentation of GovGuide here:
 
 🛠️ Tech Stack
 
-Backend: Django / Python
+ * Backend: Django / Python
 
-Database: MySQL
+ * Database: MySQL
 
-Frontend: HTML, CSS, JavaScript
+ * Frontend: HTML, CSS, JavaScript(using templates and static files)
 
-Deployment: GitHub / (pythonanywhere.com)
+ * Deployment: GitHub / (pythonanywhere.com)
 
 Visit the app at (https://abdulex.pythonanywhere.com/)
 
@@ -35,10 +35,10 @@ Visit the app at (https://abdulex.pythonanywhere.com/)
 
 Contributions are welcome! If you’d like to improve GovGuide:
 
-Fork the repo
+ * Fork the repo
 
-Create a new branch (feature-xyz)
+ * Create a new branch (feature-xyz)
 
-Commit your changes
+ * Commit your changes
 
-Submit a Pull Request
+ * Submit a Pull Request
